@@ -54,7 +54,7 @@ So that's all about finding $\theta s$
 function Theta = LF(x,y)
 ```
 + The return value is Theta, which is just $\Theta$ and you don't need to do anything more on it.  
-+ The arguments are x,y, and they are should be in the same form as I mentioined before. I will provide two x and y in the form of .mat file, and you can use load() function to change the files into variables  
-+ If $n\leq2$, your function needs to plot a figure like the following to validate your fitting. 
-
++ The arguments are x,y, and they are should be in the same form as I mentioined before. 
++ When you finish the implementation, put LF.m in this directory and run ex1.m.
++ *(Optional) You can think about how to implement a polynomial fit(fit in the form of $y = ax^2+bx+c$ or higher degrees) using the same method.  
 
