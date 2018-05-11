@@ -55,7 +55,7 @@ In the part of deciding the input arguments. My suggestion is that your settleme
 
 > Suppose you are a skilled thief and you sneaked into a museum to steal something. There are many exhibits in the museum and you should bring some back.   
 > Of course you want the total value of what you steal be as large as possible. However, you cannot bring everything home as the total weight will be too large to carry. So it is time for you to choose some to put into your backpack.  
-> Suppose that there are $n$ exhibits. You know exactly the value $a_i$ and the weight $w_i$ of the $i_{th}$ exhibit and you know that the maximum weight that you can carry is $maxw$. The question is, what is the maximum total value of waht you can bring back?
+> Suppose that there are $n$ exhibits. You know exactly the value $a_i$ and the weight $w_i$ of the $i_{th}$ exhibit and you know that the maximum total weight that you can carry is $maxw$. The question is, what is the maximum total value of what you can bring back?
 
 In this problem, I will use these things to define a "state":  
 1. The weight that I can still put into my backpack.  
@@ -76,13 +76,13 @@ Now think about the $k_{th}$ exhibit. Actually I can choose whether or not to br
 
 If I choose to bring the $k_{th}$ exhibit, I have only $v-w_k$ of weight to put the rest $k-1$ exhibits, thus the maximum total value is $Backpack(k-1,v-w_k)$. But since I already take the $k_{th}$ one, the value should be added with $a_k$, and it will be $a_k+Backpack(k-1,v-w_k)$.  
 
-If I don't take the $k_{th}$ exhibit, then I have $v$ weight lift to choose from the rest $k-1$ exhibits, and the maximum total value is $Backpack(k-1,v)$.  
+If I don't take the $k_{th}$ exhibit, then I have $v$ weight left to choose from the rest $k-1$ exhibits, and the maximum total value is $Backpack(k-1,v)$.  
 
 And it is obvious that the maximum value of choosing from the first $k$ goods with $v$ maximum weight is the larger one of the former two situations. Thus the recursive expression can be represented as $$Backpack(k,v) = max\{a_k+Backpack(k-1,v-w_k),Backpack(k-1,v)\}$$
 
 Now it is time to decide the boundary conditions. As there are two input arguments, there might be two different kind of boundary conditions:  
 1. If $k=0$, that means that I should choose from nothing, then the total value will be of course 0.  
-2. If $v\leq0$(here it is possible that $v<0$), the I cannot carry anything, so the value will also be 0.  
+2. If $v\leq0$(here it is possible that $v<0$), then I cannot carry anything, so the value will also be 0.  
 
 As the boundary condtitions are all settled, the function can be implemented(Suppose vector $A$ and $W$ store the data of $a_i$ and $w_i$):  
 
@@ -103,3 +103,5 @@ There will be some more examples such as the famous **Hanoi Tower** problem and 
 
 ## P.S.  
 In this chapter I also leave some questions for you in the "practice" directory.  
+
+Another tip is that **recursion is not a method to save running time and space of a program**. It is because that the process of calling a function takes a lot of time and space. The reason for using recursion is that it is a more undestandable and implementable way for programmers and code readers.    
